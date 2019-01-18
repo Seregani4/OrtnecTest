@@ -5,45 +5,55 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import io.appium.java_client.AppiumDriver;
 
 public class ortnec {
 
-    private WebDriver driver;
-    AppiumDriver appiumDriver;
+    WebDriver driver;
 
     @Before
     public void setUp() throws MalformedURLException {
         DesiredCapabilities cap = new DesiredCapabilities();
+
+        //as I understood this setting for install application on device
 //        File snapChat = new File("/home/sergey/Downloads/Snapchat_v10.48.1.0_apkpure.com.apk");
 //        cap.setCapability("app", snapChat);
+
+        //Real device
         cap.setCapability("deviceName", "Galaxy J5");
         cap.setCapability("udid", "5200489cfe425483");
         cap.setCapability(CapabilityType.VERSION, "8.1.0");
+
+        //Settings for emulator
 //        cap.setCapability("deviceName", "Pixel_2_API_27");
 //        cap.setCapability("udid", "emulator-5554");
 //        cap.setCapability(CapabilityType.VERSION, "8.1");
+
+        //Setting for launch application
         cap.setCapability("platformName", "Android");
         cap.setCapability("appPackage", "com.snapchat.android");
         cap.setCapability("appActivity", "com.snapchat.android.LandingPageActivity");
-//        cap.setCapability("appPackage", "com.sec.android.app.popupcalculator");
-//        cap.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
-        driver = new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
+        URL url = new URL("http://0.0.0.0:4723/wd/hub");
+        driver = new RemoteWebDriver(url, cap);
     }
 
     @Test
-    public void launchApplication() throws InterruptedException {
-        Thread.sleep(5000);
-        appiumDriver.launchApp();
-        driver.findElement(By.name("Sign Up")).click();
-        Thread.sleep(5000);
+    public void login() throws InterruptedException {
+        //click "Log in" button
+        driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
+
+        //Write Email
+        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("seregani4");
+
+        //Write password
+        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(1).sendKeys("capserfu12");
+
+        //click second "Log in" button
+        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
     }
 
     @After
