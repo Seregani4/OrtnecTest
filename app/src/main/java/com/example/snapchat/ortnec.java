@@ -3,17 +3,17 @@ package com.example.snapchat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
+import Pages.loginPage;
 
-public class ortnec {
+public class ortnec{
 
-    WebDriver driver;
+    public WebDriver driver;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -43,17 +43,24 @@ public class ortnec {
 
     @Test
     public void login() throws InterruptedException {
+
         //click "Log in" button
-        driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
+        Thread.sleep(2000);
+        loginPage.loginButton.click();
+//        driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
 
         //Write Email
-        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("seregani4");
+        loginPage.emailField.sendKeys("seregani4");
+//        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("seregani4");
 
         //Write password
-        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(1).sendKeys("capserfu12");
+        loginPage.passwordField.sendKeys("capserfu12");
+//        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(1).sendKeys("capserfu12");
 
         //click second "Log in" button
-        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
+        loginPage.secondLoginButton.click();
+//        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
+
     }
 
     @After
