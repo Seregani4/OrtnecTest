@@ -51,6 +51,8 @@ dependencies {
     implementation group: 'com.comcast.magic-wand', name: 'appium', version: '4.0.3'
 //    implementation group: 'io.appium', name: 'java-client', version: '7.0.0'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-android-driver', version: '2.39.0'
+
 //    implementation group: 'org.testng', name: 'testng', version: '6.14.3'
 
 
