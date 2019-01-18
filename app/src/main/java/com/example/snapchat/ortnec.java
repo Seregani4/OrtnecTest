@@ -3,6 +3,7 @@ package com.example.snapchat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -11,9 +12,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import Pages.loginPage;
 
-public class ortnec{
+public class ortnec {
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -46,21 +47,39 @@ public class ortnec{
 
         //click "Log in" button
         Thread.sleep(2000);
-        loginPage.loginButton.click();
-//        driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
+//        System.out.print(Pages.loginPage.loginButton);
+//        Pages.loginPage.loginButton.click();
+        driver.findElement(By.xpath("//android.widget.TextView[@index='1']")).click();
 
         //Write Email
-        loginPage.emailField.sendKeys("seregani4");
-//        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("seregani4");
+//        loginPage.emailField.sendKeys("seregani4");
+        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("seregani4");
 
         //Write password
-        loginPage.passwordField.sendKeys("capserfu12");
-//        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(1).sendKeys("capserfu12");
+//        loginPage.passwordField.sendKeys("capserfu12");
+        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(1).sendKeys("capserfu12");
 
         //click second "Log in" button
-        loginPage.secondLoginButton.click();
-//        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
+//        loginPage.secondLoginButton.click();
+        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
+        Thread.sleep(10000);
+        //Allow buttons
+        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
+        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
+        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
+        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
+        //My profile button
+        driver.findElement(By.xpath("//android.widget.ImageView[@index='1']")).click();
+        //Add friends button
+        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='3']")).click();
+        //Search field
+        driver.findElements(By.xpath("//android.widget.EditText[@index='0']")).get(0).sendKeys("sol_marl");
+        //Add friend sol_marl
+        driver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']")).click();
 
+
+
+        Thread.sleep(12000);
     }
 
     @After

@@ -1,13 +1,12 @@
 package Pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import com.example.snapchat.ortnec;
 
-public class loginPage {
+public class loginPage extends ortnec{
 
     //try to remember how I should use page object pattern
-    WebDriver driver;
     public static WebElement loginButton;
     public static WebElement emailField;
     public static WebElement passwordField;
